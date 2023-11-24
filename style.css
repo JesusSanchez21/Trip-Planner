@@ -1,0 +1,104 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: #ffffff;
+    font-family: 'Helvetica', sans-serif;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    animation: changeBackground 6s linear infinite;
+}
+
+@keyframes changeBackground {
+    0%, 100% {
+        background-image: url("images/slider1.jpg");
+    }
+    40% {
+        background-image: url("images/slider2.jpg");
+    }
+    80% {
+        background-image: url("images/slider3.jpg");
+    }
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    padding: 15px;
+}
+
+.navbar {
+    background-color: transparent;
+    z-index: 2;
+    color: white;
+}
+
+.navbar-brand img {
+    max-height: 140px; /* Adjusted max-height for responsiveness */
+}
+
+.navbar-nav .nav-link {
+    color: white;
+    font-size: 20px;
+    margin: 10px;
+}
+
+#landing-container {
+    text-align: center;
+    animation: fadeIn 2s ease-in-out;
+    margin-top: 60px;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 4em; /* Adjusted font size for responsiveness */
+    margin-bottom: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+p {
+    font-size: 1.8em; /* Adjusted font size for responsiveness */
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+#explore-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    border-radius: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out, color 0.3s ease;
+    cursor: pointer;
+}
+
+#explore-btn:hover {
+    background-color: #fff;
+    color: #000;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

@@ -6,21 +6,21 @@ body {
     justify-content: center;
     height: 100vh;
     color: #ffffff;
-    font-family: 'Helvetica', sans-serif;
+    font-family: 'Roboto condensed' sans-serif;
     overflow: hidden;
     background-size: cover;
     background-position: center;
-    animation: changeBackground 6s linear infinite;
+    animation: changeBackground 9s linear infinite;
 }
 
 @keyframes changeBackground {
-    0%, 100% {
+    0%, 0% {
         background-image: url("images/slider1.jpg");
     }
-    40% {
+    50% {
         background-image: url("images/slider2.jpg");
     }
-    80% {
+    100% {
         background-image: url("images/slider3.jpg");
     }
 }
@@ -37,20 +37,8 @@ header {
     padding: 15px;
 }
 
-.navbar {
-    background-color: transparent;
-    z-index: 2;
-    color: white;
-}
-
 .navbar-brand img {
-    max-height: 140px; /* Adjusted max-height for responsiveness */
-}
-
-.navbar-nav .nav-link {
-    color: white;
-    font-size: 20px;
-    margin: 10px;
+    max-height: 180px; /* Adjusted max-height for responsiveness */
 }
 
 #landing-container {

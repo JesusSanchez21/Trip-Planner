@@ -15,13 +15,13 @@ body {
 
 @keyframes changeBackground {
     0%, 0% {
-        background-image: url("images/slider1.jpg");
+        background-image: url("../images/slider1.jpg");
     }
     50% {
-        background-image: url("images/slider2.jpg");
+        background-image: url("../images/slider2.jpg");
     }
     100% {
-        background-image: url("images/slider3.jpg");
+        background-image: url("../images/slider3.jpg");
     }
 }
 

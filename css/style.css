@@ -25,6 +25,12 @@ body {
     }
 }
 
+.navbar {
+    background-color: transparent;
+    z-index: 2; /* Set a higher z-index to keep the navbar on top */
+    color: white;
+}
+
 header {
     position: fixed;
     top: 0;
@@ -89,4 +95,24 @@ p {
     to {
         opacity: 1;
     }
+}
+#signin-btn {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    border-radius: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out, color 0.3s ease;
+    cursor: pointer;
+    margin: 10px; /* Add margin to separate from the Explore button */
+}
+
+#signin-btn:hover {
+    background-color: #fff;
+    color: #000;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }

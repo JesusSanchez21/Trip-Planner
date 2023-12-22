@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require("express"); //"express é a library"
 const app = express();
 const cors = require("cors");
 const pool = require("./db");
@@ -91,7 +91,8 @@ app.delete("/users/:id", async (req, res) => {
 });
 
 //Para o server começar temos de dar listen à port do server 
-//(5000 é a porta neste caso o parentesis é o host name e o console.log é a callback function para nos indicar que começou com sucesso)
+//(5000 é a porta neste caso o parentesis ()
+// é o host name e o console.log é a callback function para nos indicar que começou com sucesso)
 
 app.listen(5000, () => {
     console.log("O servidor começou no port: 5000");

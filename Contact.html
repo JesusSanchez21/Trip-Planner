@@ -4,14 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Form</title>
+    
     <link rel="stylesheet" href="css/Contact.css">
+    <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
     <script
       src="https://kit.fontawesome.com/64d58efce2.js"
       crossorigin="anonymous"
     ></script>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   </head>
   <body>   
+
+    <header>
+      <!-----------------------#HEADER--------------------->
+      <nav>
+        <ul class="sidebar">
+          <li onclick=hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26">231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
+          <li><a href="HomePage.html">Home</a></li>
+          <li><a href="#">Explore</a></li>
+          <li><a href="FAQ.html">FAQ</a></li>
+          <li><a href="Contact.html">Contact</a></li>
+          <li><a href="Login.html">Login</a></li>
+        </ul>
+        <ul>
+          <li> <a class="navbar-brand" href="index.html"><img src="Images/logo.png" alt="Logo" class="img-fluid"></a></li>
+          <li class="hideOnMobile"><a href="HomePage.html">Home</a></li>
+          <li class="hideOnMobile"><a href="#">Explore</a></li>
+          <li class="hideOnMobile"><a href="FAQ.html">FAQ</a></li>
+          <li class="hideOnMobile"><a href="Contact.html">Contact</a></li>
+          <li class="hideOnMobile"><a href="Login.html">Login</a></li>
+          <li class="menu-button" onclick=showSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
+        </ul>
+      </nav>
+  </header>
+  
     <div class="container">
         <img src="img/shape.png" class="square" alt="" />
         <div class="form">
@@ -87,6 +116,17 @@
         </div>
       </div>
     <script>
+
+function showSidebar(){
+      const sidebar = document.querySelector('.sidebar')
+      sidebar.style.display = 'flex'
+    }
+    function hideSidebar(){
+      const sidebar = document.querySelector('.sidebar')
+      sidebar.style.display = 'none'
+    }
+    //-------------------------------------------------------------//
+
       const inputs = document.querySelectorAll(".input");
 
       function focusFunc() {
@@ -107,5 +147,8 @@
       });
 
     </script>
+   <!--- <div class="visme_d" data-title="Untitled Project" data-url="90x6ggkp-untitled-project?fullPage=true" data-domain="forms" data-full-page="true" data-min-height="100vh" data-form-id="31901"></div><script src="https://static-bundles.visme.co/forms/vismeforms-embed.js"></script> -->
+   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   </body>
 </html>
+    

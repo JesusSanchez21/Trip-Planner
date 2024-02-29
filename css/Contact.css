@@ -10,19 +10,100 @@ body,
 input,
 textarea {
   font-family: "Poppins", sans-serif;
+  
 }
 
-body {
-  background: linear-gradient(45deg, #3494e6, #610b38);
-  background-size: cover;
-  background-attachment: fixed;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-}
 
+
+
+/*-----------------------------------*\
+ * #HEADER
+\*-----------------------------------*/
+nav {
+  top: 0;
+    background-color: white;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+    height: 100px;
+    position: fixed;
+    width: 100%;
+    z-index: 1001;
+    display: flex;
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+  }
+  
+  nav a {
+    height: 100%;
+    
+    padding: 0 30px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: black;
+    font-size: 20px; /* Set your desired font size */
+  }
+  
+  nav ul{
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  nav li{
+    height: 50px;
+  }
+  
+  nav a:hover{
+    background-color: #f0f0f0;
+  }
+  nav li:first-child{
+    margin-right: auto;
+  }
+  .navbar-brand img {
+    max-height: 180px;
+    /* Adjust the logo height */
+  }
+  .sidebar{
+    position: fixed;
+    top: 0; 
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .sidebar li{
+    width: 100%;
+  }
+  .sidebar a{
+    width: 100%;
+  }
+  .menu-button{
+    display: none;
+  }
+  @media(max-width: 800px){
+    .hideOnMobile{
+      display: none;
+    }
+    .menu-button{
+      display: block;
+    }
+  }
+  @media(max-width: 400px){
+    .sidebar{
+      width: 100%;
+      position: absolute;
+    }
+  }
+  
+  
 .container {
   position: relative;
   width: 100%;
@@ -37,15 +118,16 @@ body {
 
 
 .form {
-    width: 100%; /* Adjust the width as needed, e.g., 150% */
-    max-width: 1000px;
-    background-color: #FFF;
-    border-radius: 10px;
-    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  max-width: 1000px;
+  background-color: #FFF;
+  border-radius: 10px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center; /* Add this line to center only the form section */
   }
   
 .contact-form {
@@ -292,6 +374,7 @@ textarea.input {
 @media (max-width: 850px) {
   .form {
     grid-template-columns: 1fr;
+    margin-top: 150px;
   }
 
   .contact-info:before {
@@ -327,20 +410,19 @@ textarea.input {
   }
 }
 
+
+
+/* Add this style to adjust the padding of the form and other elements on even smaller screens */
 @media (max-width: 480px) {
   .container {
+    padding: 1rem; /* Adjust as needed */
+    position: relative;
+  }
+
+  .form,
+  .contact-info,
+  form {
     padding: 1.5rem;
-  }
-
-  .contact-info:before {
-    display: none;
-  }
-
-  .square,
-
-  form,
-  .contact-info {
-    padding: 1.7rem 1.6rem;
   }
 
   .text,
@@ -363,10 +445,7 @@ textarea.input {
     width: 23px;
   }
 
-  .input {
-    padding: 0.45rem 1.2rem;
-  }
-
+  .input,
   .btn {
     padding: 0.45rem 1.2rem;
   }

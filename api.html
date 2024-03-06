@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attraction Search</title>
+    <link rel="stylesheet" href="css/api.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="sidebar">
+                <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26">231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
+                <li><a href="HomePage.html">Home</a></li>
+                <li><a href="#">Explore</a></li>
+                <li><a href="FAQ.html">FAQ</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="profile.php">Profile</a></li>
+            </ul>
+            <ul>
+                <li> <a class="navbar-brand" href="index.html"><img src="Images/logo.png" alt="Logo" class="img-fluid"></a></li>
+                <li class="hideOnMobile"><a href="HomePage.html">Home</a></li>
+                <li class="hideOnMobile"><a href="#">Explore</a></li>
+                <li class="hideOnMobile"><a href="FAQ.html">FAQ</a></li>
+                <li class="hideOnMobile"><a href="Contact.html">Contact</a></li>
+                <li class="hideOnMobile"><a href="profile.php">Profile</a></li>
+                <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
+            </ul>
+        </nav>
+    </header>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <form id="attractionForm">
+        <label for="location">Enter Location:</label>
+        <input type="text" id="location" name="location" required>
+        <button type="submit">Search</button>
+    </form>
+
+    <div id="result" class="result-container"></div>
+
+    <button id="loadMoreBtn">Load More</button>
+
+    <script>
+        let currentPage = 1;
+
+        document.getElementById('attractionForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            currentPage = 1; // Reset page number on new search
+            const location = document.getElementById('location').value;
+            await fetchData(location);
+        });
+
+        document.getElementById('loadMoreBtn').addEventListener('click', async function() {
+            currentPage++; // Increment page number
+            const location = document.getElementById('location').value;
+            await fetchData(location);
+        });
+
+        async function fetchData(location) {
+            const firstApiUrl = `https://tripadvisor16.p.rapidapi.com/api/v1/restaurant/searchLocation?query=${location}`;
+            const firstApiOptions = {
+                method: 'GET',
+                headers: {
+                    'X-RapidAPI-Key': '39a5aae2f7msh4d88712dfc64190p125e41jsndd42c84a4215',
+                    'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
+                },
+            };
+
+            try {
+                const response = await fetch(firstApiUrl, firstApiOptions);
+                const result = await response.json();
+                const locationId = result.data[0].locationId; // Extract location ID from the response
+                await fetchSecondApi(locationId);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        async function fetchSecondApi(locationId) {
+            const secondApiUrl = `https://tripadvisor16.p.rapidapi.com/api/v1/restaurant/searchRestaurants?locationId=${locationId}`;
+            const secondApiOptions = {
+                method: 'GET',
+                headers: {
+                    'X-RapidAPI-Key': '39a5aae2f7msh4d88712dfc64190p125e41jsndd42c84a4215',
+                    'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
+                }
+            };
+
+            try {
+                const response = await fetch(secondApiUrl, secondApiOptions);
+                const result = await response.json();
+                displayRestaurants(result); // Pass the restaurant data to a display function
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        function displayRestaurants(result) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = ''; // Clear previous result
+
+            if (result.status && result.data && result.data.totalRecords > 0) {
+                result.data.data.forEach(restaurant => {
+                    const restaurantDiv = document.createElement('div');
+                    restaurantDiv.classList.add('restaurant-card'); // Add class to restaurant card
+                    restaurantDiv.innerHTML = `
+                        <h3>${restaurant.name}</h3>
+                        <p>Average Rating: ${restaurant.averageRating}</p>
+                        <p>User Review Count: ${restaurant.userReviewCount}</p>
+                        <p>Open Status: ${restaurant.currentOpenStatusText}</p>
+                        <p>Price Tag: ${restaurant.priceTag}</p>
+                        ${restaurant.menuUrl ? `<p><a href="${restaurant.menuUrl}" target="_blank">Menu</a></p>` : ''}
+                        <img src="${restaurant.squareImgUrl}" alt="${restaurant.name} Image">
+                        <p><strong>Review Snippets:</strong></p>
+                        <ul>
+                            ${restaurant.reviewSnippets.reviewSnippetsList.map(snippet => `<li><a href="${snippet.reviewUrl}" target="_blank">${snippet.reviewText}</a></li>`).join('')}
+                        </ul>
+                    `;
+                    resultDiv.appendChild(restaurantDiv);
+                });
+            } else {
+                const message = document.createElement('p');
+                message.textContent = 'No restaurants found.';
+                resultDiv.appendChild(message);
+            }
+        }
+
+        function showSidebar() {
+            document.querySelector('.sidebar').classList.add('active');
+        }
+
+        function hideSidebar() {
+            document.querySelector('.sidebar').classList.remove('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airport Information</title>
+    <link rel="stylesheet" href="css/api.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS for formatting */
+        .flight-box {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .flight-info p {
+            margin: 5px 0;
+        }
+        .flight-info a {
+            display: block;
+            margin-top: 10px;
+        }
+        .flight-image {
+            position: absolute;
+            top: 11px;
+            right: 10px;
+            width: 200px; /* Adjust the width as needed */
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="sidebar">
+                <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26">231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
+                <li><a href="HomePage.html">Home</a></li>
+                <li><a href="#">Explore</a></li>
+                <li><a href="FAQ.html">FAQ</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="profile.php">Profile</a></li>
+            </ul>
+            <ul>
+                <li> <a class="navbar-brand" href="index.html"><img src="Images/logo.png" alt="Logo" class="img-fluid"></a></li>
+                <li class="hideOnMobile"><a href="HomePage.html">Home</a></li>
+                <li class="hideOnMobile"><a href="#">Explore</a></li>
+                <li class="hideOnMobile"><a href="FAQ.html">FAQ</a></li>
+                <li class="hideOnMobile"><a href="Contact.html">Contact</a></li>
+                <li class="hideOnMobile"><a href="profile.php">Profile</a></li>
+                <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
+            </ul>
+        </nav>
+    </header>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <label for="airportInput1">Enter Airport 1:</label>
+                <input type="text" id="airportInput1" class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label for="airportInput2">Enter Airport 2:</label>
+                <input type="text" id="airportInput2" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="dateInput">Select Date:</label>
+                <input type="date" id="dateInput" class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label for="itineraryTypeInput">Select Itinerary Type:</label>
+                <select id="itineraryTypeInput" class="form-control">
+                    <option value="ONE_WAY">ONE_WAY</option>
+               <!-- <option value="ROUND_TRIP">ROUND_TRIP</option>
+                    <option value="MULTI_CITY">MULTI_CITY</option>-->
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="sortOrderInput">Select Sort Order:</label>
+                <select id="sortOrderInput" class="form-control">
+                    <option value="ML_BEST_VALUE">ML_BEST_VALUE</option>
+                    <option value="DURATION">DURATION</option>
+                    <option value="PRICE">PRICE</option>
+                    <option value="EARLIEST_OUTBOUND_DEPARTURE">EARLIEST_OUTBOUND_DEPARTURE</option>
+                    <option value="EARLIEST_OUTBOUND_ARRIVAL">EARLIEST_OUTBOUND_ARRIVAL</option>
+                    <option value="LATEST_OUTBOUND_DEPARTURE">LATEST_OUTBOUND_DEPARTURE</option>
+                    <option value="LATEST_OUTBOUND_ARRIVAL">LATEST_OUTBOUND_ARRIVAL</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="numAdultsInput">Enter Number of Adults:</label>
+                <input type="number" id="numAdultsInput" class="form-control" value="1">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="numSeniorsInput">Enter Number of Seniors:</label>
+                <input type="number" id="numSeniorsInput" class="form-control" value="1">
+            </div>
+            <div class="col-md-6">
+                <label for="classOfServiceInput">Select Class of Service:</label>
+                <select id="classOfServiceInput" class="form-control">
+                    <option value="ECONOMY">ECONOMY</option>
+                    <option value="PREMIUM_ECONOMY">PREMIUM ECONOMY</option>
+                    <option value="BUSINESS">BUSINESS</option>
+                    <option value="FIRST">FIRST</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <button onclick="searchAirports()" class="btn btn-primary">Search</button>
+            </div>
+        </div>
+        <div id="flightOutput" class="mt-4"></div>
+    </div>
+
+    <script>
+        async function searchAirport(airportInputId, callback) {
+            const airport = document.getElementById(airportInputId).value;
+            const url = `https://tripadvisor16.p.rapidapi.com/api/v1/flights/searchAirport?query=${airport}`;
+            const options = {
+                method: 'GET',
+                headers: {
+                    'X-RapidAPI-Key': '7427483edamshd509b17a24828bdp1cf22bjsnb1d045ddf2f4',
+                    'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
+                }
+            };
+
+            try {
+                const response = await fetch(url, options);
+                const result = await response.json();
+                console.log(result);
+
+                if (result.status === true) {
+                    const data = result.data[0];
+                    callback(data.airportCode);
+                } else {
+                    console.log("No data found");
+                }
+            } catch (error) {
+                console.error(error);
+                console.log("Error occurred. Please try again later.");
+            }
+        }
+
+        async function searchAirports() {
+            let airport1, airport2;
+            
+            if (airport1 = document.getElementById("airportInput1").value) {
+                searchAirport("airportInput1", (code) => {
+                    airport1 = code;
+                    if (airport2) {
+                        makeSecondAPICall(airport1, airport2);
+                    }
+                });
+            }
+            if (airport2 = document.getElementById("airportInput2").value) {
+                searchAirport("airportInput2", (code) => {
+                    airport2 = code;
+                    if (airport1) {
+                        makeSecondAPICall(airport1, airport2);
+                    }
+                });
+            }
+        }
+
+        async function makeSecondAPICall(sourceAirportCode, destinationAirportCode) {
+            const date = document.getElementById("dateInput").value;
+            const itineraryType = document.getElementById("itineraryTypeInput").value;
+            const sortOrder = document.getElementById("sortOrderInput").value;
+            const numAdults = document.getElementById("numAdultsInput").value;
+            const numSeniors = document.getElementById("numSeniorsInput").value;
+            const classOfService = document.getElementById("classOfServiceInput").value;
+
+            const url = `https://tripadvisor16.p.rapidapi.com/api/v1/flights/searchFlights?sourceAirportCode=${sourceAirportCode}&destinationAirportCode=${destinationAirportCode}&date=${date}&itineraryType=${itineraryType}&sortOrder=${sortOrder}&numAdults=${numAdults}&numSeniors=${numSeniors}&classOfService=${classOfService}&pageNumber=1&currencyCode=USD`;
+
+            const options = {
+                method: 'GET',
+                headers: {
+                    'X-RapidAPI-Key': '7427483edamshd509b17a24828bdp1cf22bjsnb1d045ddf2f4',
+                    'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
+                }
+            };
+
+            try {
+                const response = await fetch(url, options);
+                const result = await response.json();
+                console.log(result);
+
+                const outputDiv = document.getElementById("flightOutput");
+
+                if (result.status === true) {
+                    const flights = result.data.flights;
+                    if (flights.length > 0) {
+                        outputDiv.innerHTML = ""; // Clear previous content
+                        flights.forEach(flight => {
+                            outputDiv.innerHTML += `
+                                <div class="flight-box">
+                                    <div class="flight-info">
+                                        <p>Departure: ${flight.segments[0].legs[0].departureDateTime}</p>
+                                        <p>Arrival: ${flight.segments[0].legs[0].arrivalDateTime}</p>
+                                        <p>Airline: ${flight.segments[0].legs[0].marketingCarrier.displayName}</p>
+                                        <p>Flight Number: ${flight.segments[0].legs[0].flightNumber}</p>
+                                        <p>Price: ${flight.purchaseLinks[0].totalPrice}</p>
+                                        <a href="${flight.purchaseLinks[0].url}" target="_blank">Book Now</a>
+                                    </div>
+                                    <img src="Images/airplane.PNG" alt="Airplane" class="flight-image">
+                                </div>
+                            `;
+                        });
+                    } else {
+                        outputDiv.innerHTML = "<p>No flights found.</p>";
+                    }
+                } else {
+                    outputDiv.innerHTML = "<p></p>";
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    </script>
+</body>
+</html>

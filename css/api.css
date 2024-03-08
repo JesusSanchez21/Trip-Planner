@@ -12,7 +12,6 @@ nav {
 
 nav a {
   height: 100%;
-
   padding: 0 30px;
   text-decoration: none;
   display: flex;
@@ -21,30 +20,35 @@ nav a {
   font-size: 20px; /* Set your desired font size */
 }
 
-nav ul{
-  width: 100%;
+nav ul {
+  margin: auto; /* Center the navbar items */
   list-style: none;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  align-items: center; /* Center items vertically */
 }
-nav li{
+
+nav li {
   height: 50px;
 }
 
-nav a:hover{
+nav a:hover {
   background-color: #f0f0f0;
 }
-nav li:first-child{
-  margin-right: auto;
+
+.navbar-brand {
+  height: 100px; /* Set the same height as the navbar */
+  display: flex;
+  align-items: center; /* Align items vertically */
 }
-.navbar-brand img {
-  max-height: 180px;
-  /* Adjust the logo height */
+
+.hideOnMobile {
+  display: none;
+  height: 100px; /* Set the same height as the navbar */
 }
-.sidebar{
+
+.sidebar {
   position: fixed;
-  top: 0; 
+  top: 0;
   right: 0;
   height: 100vh;
   width: 250px;
@@ -57,106 +61,112 @@ nav li:first-child{
   align-items: flex-start;
   justify-content: flex-start;
 }
-.sidebar li{
+
+.sidebar li {
   width: 100%;
 }
-.sidebar a{
+
+.sidebar a {
   width: 100%;
 }
-.menu-button{
+
+.menu-button {
   display: none;
 }
-@media(max-width: 800px){
-  .hideOnMobile{
+
+@media (max-width: 800px) {
+  .hideOnMobile {
     display: none;
   }
-  .menu-button{
+  .menu-button {
     display: block;
   }
 }
-@media(max-width: 400px){
-  .sidebar{
+
+@media (max-width: 400px) {
+  .sidebar {
     width: 100%;
   }
 }
+
 /* Add style for restaurant cards */
 .result-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust the minimum and maximum width of each grid item */
-    grid-gap: 20px; /* Adjust the gap between grid items */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust the minimum and maximum width of each grid item */
+  grid-gap: 20px; /* Adjust the gap between grid items */
 }
 
 .restaurant-card {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .restaurant-card h3 {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .restaurant-card img {
-    max-width: 100%;
-    height: auto;
-    margin-top: 10px;
-    border-radius: 5px;
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+  border-radius: 5px;
 }
 
 .restaurant-card ul {
-    padding-left: 20px;
+  padding-left: 20px;
 }
 
 /* Adjust the sidebar style */
 .sidebar {
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100vh;
-    width: 250px;
-    background-color: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(12px);
-    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
-    list-style: none;
-    display: none;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 250px;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .sidebar.active {
-    display: block;
+  display: block;
 }
 
 .sidebar li {
-    width: 100%;
+  width: 100%;
 }
 
 .sidebar a {
-    width: 100%;
+  width: 100%;
 }
 
 .menu-button {
-    display: none;
+  display: none;
 }
 
 @media (max-width: 800px) {
-    .hideOnMobile {
-        display: none;
-    }
+  .hideOnMobile {
+    display: none;
+  }
 
-    .menu-button {
-        display: block;
-    }
+  .menu-button {
+    display: block;
+  }
 
-    /* Adjust the sidebar width for smaller screens */
-    .sidebar {
-        width: 100%;
-    }
+  /* Adjust the sidebar width for smaller screens */
+  .sidebar {
+    width: 100%;
+  }
 
-    /* Adjust the grid layout for smaller screens */
-    .result-container {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust the minimum and maximum width of each grid item */
-    }
+  /* Adjust the grid layout for smaller screens */
+  .result-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust the minimum and maximum width of each grid item */
+  }
 }

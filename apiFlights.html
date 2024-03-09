@@ -34,40 +34,8 @@
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul class="sidebar">
-                <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26">231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
-                <li><a href="HomePage.html">Home</a></li>
-                <li><a href="#">Explore</a></li>
-                <li><a href="FAQ.html">FAQ</a></li>
-                <li><a href="Contact.html">Contact</a></li>
-                <li><a href="profile.php">Profile</a></li>
-                <li><a href="apiFlights.html">Flights</a></li>
-                <li><a href="api.html">Best Restaurants</a></li>
-            </ul>
-            <ul>
-                <li> <a class="navbar-brand" href="index.html"><img src="Images/logo.png" alt="Logo" class="img-fluid"></a></li>
-                <li class="hideOnMobile"><a href="HomePage.html">Home</a></li>
-                <li class="hideOnMobile"><a href="#">Explore</a></li>
-                <li class="hideOnMobile"><a href="FAQ.html">FAQ</a></li>
-                <li class="hideOnMobile"><a href="Contact.html">Contact</a></li>
-                <li class="hideOnMobile"><a href="profile.php">Profile</a></li>
-                <li class="hideOnMobile"><a href="apiFlights.html">Flights</a></li>
-                <li class="hideOnMobile"><a href="api.html">Best Restaurants</a></li>
-                <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
-            </ul>
-        </nav>
-    </header>
-    
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+    <iframe id="headerFrame" src="header.html" style="width: 100%; border: none;"></iframe>
+  
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -222,7 +190,7 @@
                                         <p>Airline: ${flight.segments[0].legs[0].marketingCarrier.displayName}</p>
                                         <p>Flight Number: ${flight.segments[0].legs[0].flightNumber}</p>
                                         <p>Price: ${flight.purchaseLinks[0].totalPrice}</p>
-                                        <a href="${flight.purchaseLinks[0].url}" target="_blank">Book Now</a>
+                                        <a href="${flight.purchaseLinks[0].url}" target="_blank" onclick="disableIframe()">Book Now</a>
                                     </div>
                                     <img src="Images/airplane.PNG" alt="Airplane" class="flight-image">
                                 </div>
@@ -237,6 +205,25 @@
             } catch (error) {
                 console.error(error);
             }
+        }
+
+        function disableIframe() {
+            document.getElementById('headerFrame').style.pointerEvents = 'none';
+        }
+
+        // Function to load content into the iframe
+        function loadContent(page) {
+            document.getElementById('content').innerHTML = '';
+            document.getElementById('content').innerHTML = `<iframe src="${page}" style="width: 100%; border: none;"></iframe>`;
+        }
+
+        // Load initial content
+        loadContent('HomePage.html'); // Change 'HomePage.html' to your initial page
+
+        // Function to handle navigation
+        function navigateTo(page) {
+            window.close(); // Close the current window
+            loadContent(page); // Load the new page
         }
     </script>
 </body>

@@ -226,9 +226,6 @@ nav li{
   height: 50px;
 }
 
-nav a:hover{
-  background-color: #f0f0f0;
-}
 nav li:first-child{
   margin-right: auto;
 }
@@ -288,7 +285,7 @@ nav li:first-child{
 
   display: grid;
   place-items: center;
-  min-height: 600px;
+  min-height: 800px;
   text-align: center;
   padding-top: 125px;
 }
@@ -311,46 +308,6 @@ nav li:first-child{
 
 
 
-
-
-/*-----------------------------------*\
- * #TOUR SEARCH
-\*-----------------------------------*/
-
-.tour-search {
-  background: var(--oxford-blue);
-  padding-block: var(--section-padding);
-}
-
-.tour-search-form .input-label {
-  color: var(--white);
-  font-size: var(--fs-4);
-  margin-left: 20px;
-  margin-bottom: 10px;
-}
-
-.tour-search-form .input-field {
-  background: var(--white);
-  padding: 10px 15px;
-  font-size: var(--fs-5);
-  border-radius: 50px;
-}
-
-.tour-search-form .input-field::placeholder { color: var(--spanish-gray); }
-
-.tour-search-form .input-field::-webkit-datetime-edit {
-  color: var(--spanish-gray);
-  text-transform: uppercase;
-}
-
-.tour-search-form .input-wrapper { margin-bottom: 15px; }
-
-.tour-search .btn {
-  width: 100%;
-  --border-width: 1px;
-  font-weight: var(--fw-600);
-  margin-top: 35px;
-}
 
 
 

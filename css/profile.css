@@ -65,9 +65,6 @@ nav {
     height: 50px;
   }
   
-  nav a:hover{
-    background-color: #f0f0f0;
-  }
   nav li:first-child{
     margin-right: auto;
   }

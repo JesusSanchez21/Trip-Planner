@@ -4,131 +4,154 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Form</title>
-    
-    <link rel="stylesheet" href="css/Contact.css">
+
+    <link rel="stylesheet" href="css/Contact.css" />
     <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <script
       src="https://kit.fontawesome.com/64d58efce2.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
-  <body>   
-
+  <body>
     <header>
       <!-----------------------#HEADER--------------------->
       <nav>
         <ul class="sidebar">
-          <li onclick=hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26">231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
+          <li onclick="hideSidebar()">
+            <a href="#"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="26"
+                viewBox="0 96 960 960"
+                width="26"
+              >
+                231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/>
+              </svg></a
+            >
+          </li>
           <li><a href="HomePage.html">Home</a></li>
-          <li><a href="#">Explore</a></li>
+          <li><a href="apiFlights.html">Flights</a></li>
+          <li><a href="api.html">Best Restaurants</a></li>
           <li><a href="FAQ.html">FAQ</a></li>
           <li><a href="Contact.html">Contact</a></li>
           <li><a href="profile.php">Profile</a></li>
-          <li><a href="apiFlights.html">Flights</a></li>
-          <li><a href="api.html">Best Restaurants</a></li>
         </ul>
         <ul>
-          <li> <a class="navbar-brand" href="index.html"><img src="Images/logo.png" alt="Logo" class="img-fluid"></a></li>
+          <li>
+            <a class="navbar-brand" href="index.html"
+              ><img src="Images/logo.png" alt="Logo" class="img-fluid"
+            /></a>
+          </li>
           <li class="hideOnMobile"><a href="HomePage.html">Home</a></li>
-          <li class="hideOnMobile"><a href="#">Explore</a></li>
+          <li class="hideOnMobile"><a href="apiFlights.html">Flights</a></li>
+          <li class="hideOnMobile"><a href="api.html">Best Restaurants</a></li>
           <li class="hideOnMobile"><a href="FAQ.html">FAQ</a></li>
           <li class="hideOnMobile"><a href="Contact.html">Contact</a></li>
           <li class="hideOnMobile"><a href="profile.php">Profile</a></li>
-          <li class="hideOnMobile"><a href="apiFlights.html">Flights</a></li>
-          <li class="hideOnMobile"><a href="api.html">Best Restaurants</a></li>
-          <li class="menu-button" onclick=showSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
+
+          <li class="menu-button" onclick="showSidebar()">
+            <a href="#"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="26"
+                viewBox="0 96 960 960"
+                width="26"
+              >
+                <path
+                  d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"
+                /></svg
+            ></a>
+          </li>
         </ul>
       </nav>
-  </header>
-  
+    </header>
+
     <div class="container">
-        <img src="img/shape.png" class="square" alt="" />
-        <div class="form">
-          <div class="contact-info">
-            <h3 class="title">Let's get in touch</h3>
-            <p class="text">
-                Have questions or special requests? Drop us a message below, and our team will be delighted to assist you in crafting the perfect itinerary for your upcoming adventure!"
-            </p>
-  
-            <div class="info">
-              <div class="information">
-                <img src="Images/location.png" class="icon" alt="" />
-                <p>Alameda das Linhas de Torres 179</p>
-              </div>
-              <div class="information">
-                <img src="Images/email.png" class="icon" alt="" />
-                <p>tripplanner71@gmail.com</p>
-              </div>
-              <div class="information">
-                <img src="Images/phone.png" class="icon" alt="" />
-                <p>+351 21 843 6670</p>
-              </div>
+      <img src="img/shape.png" class="square" alt="" />
+      <div class="form">
+        <div class="contact-info">
+          <h3 class="title">Let's get in touch</h3>
+          <p class="text">
+            Have questions or special requests? Drop us a message below, and our
+            team will be delighted to assist you in crafting the perfect
+            itinerary for your upcoming adventure!"
+          </p>
+
+          <div class="info">
+            <div class="information">
+              <img src="Images/location.png" class="icon" alt="" />
+              <p>Alameda das Linhas de Torres 179</p>
             </div>
-  
-            <div class="social-media">
-              <p>Connect with us :</p>
-              <div class="social-icons">
-                <a href="#">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="#">
-                  <i class="fab fa-twitter"></i>
-                </a>
-                <a href="#">
-                  <i class="fab fa-instagram"></i>
-                </a>
-                <a href="#">
-                  <i class="fab fa-linkedin-in"></i>
-                </a>
-              </div>
+            <div class="information">
+              <img src="Images/email.png" class="icon" alt="" />
+              <p>tripplanner71@gmail.com</p>
+            </div>
+            <div class="information">
+              <img src="Images/phone.png" class="icon" alt="" />
+              <p>+351 21 843 6670</p>
             </div>
           </div>
-          <div class="contact-form">
-            <span class="circle one"></span>
-            <span class="circle two"></span>
-  
-            <form action="index.html" autocomplete="off">
-              <h3 class="title">Contact us</h3>
-              <div class="input-container">
-                <input type="text" name="name" class="input" />
-                <label for="">Username</label>
-                <span>Username</span>
-              </div>
-              <div class="input-container">
-                <input type="email" name="email" class="input" />
-                <label for="">Email</label>
-                <span>Email</span>
-              </div>
-              <div class="input-container">
-                <input type="tel" name="phone" class="input" />
-                <label for="">Phone</label>
-                <span>Phone</span>
-              </div>
-              <div class="input-container textarea">
-                <textarea name="message" class="input"></textarea>
-                <label for="">Message</label>
-                <span>Message</span>
-              </div>
-              <input type="submit" value="Send" class="btn" />
-            </form>
+
+          <div class="social-media">
+            <p>Connect with us :</p>
+            <div class="social-icons">
+              <a href="#">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-    <script>
+        <div class="contact-form">
+          <span class="circle one"></span>
+          <span class="circle two"></span>
 
-function showSidebar(){
-      const sidebar = document.querySelector('.sidebar')
-      sidebar.style.display = 'flex'
-    }
-    function hideSidebar(){
-      const sidebar = document.querySelector('.sidebar')
-      sidebar.style.display = 'none'
-    }
-    //-------------------------------------------------------------//
+          <form action="index.html" autocomplete="off">
+            <h3 class="title">Contact us</h3>
+            <div class="input-container">
+              <input type="text" name="name" class="input" />
+              <label for="">Username</label>
+              <span>Username</span>
+            </div>
+            <div class="input-container">
+              <input type="email" name="email" class="input" />
+              <label for="">Email</label>
+              <span>Email</span>
+            </div>
+            
+            <div class="input-container textarea">
+              <textarea name="message" class="input"></textarea>
+              <label for="">Message</label>
+              <span>Message</span>
+            </div>
+            <input type="submit" value="Send" class="btn" />
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+      function showSidebar() {
+        const sidebar = document.querySelector(".sidebar");
+        sidebar.style.display = "flex";
+      }
+      function hideSidebar() {
+        const sidebar = document.querySelector(".sidebar");
+        sidebar.style.display = "none";
+      }
+      //-------------------------------------------------------------//
 
       const inputs = document.querySelectorAll(".input");
 
@@ -148,10 +171,11 @@ function showSidebar(){
         input.addEventListener("focus", focusFunc);
         input.addEventListener("blur", blurFunc);
       });
-
     </script>
-   <!--- <div class="visme_d" data-title="Untitled Project" data-url="90x6ggkp-untitled-project?fullPage=true" data-domain="forms" data-full-page="true" data-min-height="100vh" data-form-id="31901"></div><script src="https://static-bundles.visme.co/forms/vismeforms-embed.js"></script> -->
-   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!--- <div class="visme_d" data-title="Untitled Project" data-url="90x6ggkp-untitled-project?fullPage=true" data-domain="forms" data-full-page="true" data-min-height="100vh" data-form-id="31901"></div><script src="https://static-bundles.visme.co/forms/vismeforms-embed.js"></script> -->
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
   </body>
 </html>
-    

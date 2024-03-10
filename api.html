@@ -5,21 +5,258 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Best Restaurants</title>
     <link rel="stylesheet" href="css/api.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Arial', sans-serif;
+    }
 
+    .background-image {
+         background-image: url('../Trip-Planner/assets/images/resturante.webp');   
+        background-size: 100%;
+        background-position: top left; /* Adjust the starting position */
+        background-repeat: no-repeat;
+        height: 80vh; /* Set the height of the background image container to the full viewport height */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff; /* Set the text color to be visible on the background image */
+        }
+        .background-text {
+        text-align: center;
+        margin-left: 10%;
+        font-size: 36px; /* Adjust the font size as needed */
+        max-width: 80%;
+    }
+
+         
+        /*-----------------------------------*\
+         * #HEADER
+        \*-----------------------------------*/
+        nav {
+          top: 0;
+            background-color: white;
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+            height: 100px;
+            position: fixed;
+            width: 100%;
+            z-index: 1001;
+            display: flex;
+            justify-content: center; /* Center items horizontally */
+            align-items: center; /* Center items vertically */
+          }
+          
+          nav a {
+            height: 100%;
+            
+            padding: 0 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            color: black;
+            font-size: 20px; /* Set your desired font size */
+          }
+          
+          nav ul{
+            width: 100%;
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+          }
+          nav li{
+            height: 50px;
+          }
+          
+  
+          nav li:first-child{
+            margin-right: auto;
+          }
+          .navbar-brand img {
+            max-height: 180px;
+            /* Adjust the logo height */
+          }
+          .sidebar{
+            position: fixed;
+            top: 0; 
+            right: 0;
+            height: 100vh;
+            width: 250px;
+            background-color: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+            list-style: none;
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+          }
+          .sidebar li{
+            width: 100%;
+          }
+          .sidebar a{
+            width: 100%;
+          }
+          .menu-button{
+            display: none;
+          }
+          @media(max-width: 800px){
+            .hideOnMobile{
+              display: none;
+            }
+            .menu-button{
+              display: block;
+            }
+          }
+          @media(max-width: 400px){
+            .sidebar{
+              width: 100%;
+              position: absolute;
+            }
+          }
+          /* Sidebar Style */
+
+          .search {
+            margin-top: 20px; /* Adjust the margin as needed */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .search label {
+            font-size: 18px;
+            margin-right: 10px;
+        }
+
+        .search input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .search button {
+            padding: 12px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search button#loadMoreBtn {
+            background-color: #28a745;
+            margin-left: 10px;
+        }
+
+        .search button:hover {
+            background-color: #0056b3;
+        }
+
+        .result-container {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+
+        .restaurant-card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+        }
+
+        .restaurant-card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .restaurant-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .restaurant-card p {
+            margin-bottom: 8px;
+        }
+
+        .restaurant-card img {
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .restaurant-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .restaurant-card ul li {
+            font-size: 14px;
+        }
+          </style
 </head>
 <body>
-    <iframe id="headerFrame" src="header.html" style="width: 100%; border: none;"></iframe>
 
-    <form id="attractionForm">
+    <header>
+        <nav>
+            <ul class="sidebar">
+                <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26">231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
+                <li><a href="HomePage.html">Home</a></li>
+                <li><a href="apiFlights.html">Flights</a></li>
+                <li><a href="api.html">Best Restaurants</a></li>
+                <li><a href="FAQ.html">FAQ</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="profile.php">Profile</a></li>
+
+            </ul>
+            <ul>
+                <li> <a class="navbar-brand" href="index.html"><img src="Images/logo.png" alt="Logo" class="img-fluid"></a></li>
+                <li class="hideOnMobile"><a href="HomePage.html">Home</a></li>
+                <li class="hideOnMobile"><a href="apiFlights.html">Flights</a></li>
+                <li class="hideOnMobile"><a href="api.html">Best Restaurants</a></li>
+                <li class="hideOnMobile"><a href="FAQ.html">FAQ</a></li>
+                <li class="hideOnMobile"><a href="Contact.html">Contact</a></li>
+                <li class="hideOnMobile"><a href="profile.php">Profile</a></li>
+
+                <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <div class="background-image">
+        
+    </div>
+    <div class="content">
+        <div class="background-text">
+            <p>Search the Restaurants Around the World</p>
+        </div>
+        
+        <form id="attractionForm" class="search">
         <label for="location">Enter Location:</label>
         <input type="text" id="location" name="location" required>
         <button type="submit">Search</button>
+        <button id="loadMoreBtn">Load More</button>
     </form>
+        </div>
+    
 
     <div id="result" class="result-container"></div>
 
-    <button id="loadMoreBtn">Load More</button>
+    
 
     <script>
         let currentPage = 1;
@@ -42,7 +279,7 @@
             const firstApiOptions = {
                 method: 'GET',
                 headers: {
-                    'X-RapidAPI-Key': 'dd5a75eb60msh51f65e7da97887ap170803jsn4ce1df7989bc',
+                    'X-RapidAPI-Key': '3cf22992c1msh4cd0e17859c13a3p181931jsnceef025a0a1b',
                     'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
                 },
             };
@@ -62,7 +299,7 @@
             const secondApiOptions = {
                 method: 'GET',
                 headers: {
-                    'X-RapidAPI-Key': 'dd5a75eb60msh51f65e7da97887ap170803jsn4ce1df7989bc',
+                    'X-RapidAPI-Key': '3cf22992c1msh4cd0e17859c13a3p181931jsnceef025a0a1b',
                     'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
                 }
             };
@@ -120,6 +357,18 @@
     function navigateTo(page) {
         loadContent(page);
     }
+
+
+    //header maybe
+
+function showSidebar(){
+const sidebar = document.querySelector('.sidebar')
+sidebar.style.display = 'flex'
+}
+function hideSidebar(){
+const sidebar = document.querySelector('.sidebar')
+sidebar.style.display = 'none'
+}
     </script>
 </body>
 </html>

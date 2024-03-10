@@ -54,9 +54,7 @@ nav {
     height: 50px;
   }
   
-  nav a:hover{
-    background-color: #f0f0f0;
-  }
+
   nav li:first-child{
     margin-right: auto;
   }
@@ -102,7 +100,7 @@ nav {
       position: absolute;
     }
   }
-  
+  /* Sidebar Style */
   
 .container {
   position: relative;
@@ -113,6 +111,8 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 50px;
+
 }
 
 

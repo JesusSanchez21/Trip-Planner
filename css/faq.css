@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Hind:300,400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
 
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Hind', sans-serif;
+    font-family: "Poppins", sans-serif;
     background: #fff;
     color: #4d5974;
     display: flex;
@@ -13,96 +13,98 @@ body {
  * #HEADER
 \*-----------------------------------*/
 nav {
-  background-color: white;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
-  height: 100px;
-  position: fixed;
-  width: 100%;
-  z-index: 1000;
-  display: flex;
-  justify-content: center; /* Center items horizontally */
-  align-items: center; /* Center items vertically */
-}
-
-nav a {
-  height: 100%;
-
-  padding: 0 30px;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  color: black;
-  font-size: 20px; /* Set your desired font size */
-}
-
-nav ul{
-  width: 100%;
-  list-style: none;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-nav li{
-  height: 50px;
-}
-
-nav a:hover{
-  background-color: #f0f0f0;
-}
-nav li:first-child{
-  margin-right: auto;
-}
-.navbar-brand img {
-  max-height: 180px;
-  /* Adjust the logo height */
-}
-.sidebar{
-  position: fixed;
-  top: 0; 
-  right: 0;
-  height: 100vh;
-  width: 250px;
-  background-color: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(12px);
-  box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
-  list-style: none;
-  display: none;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-.sidebar li{
-  width: 100%;
-}
-.sidebar a{
-  width: 100%;
-}
-.menu-button{
-  display: none;
-}
-@media(max-width: 800px){
-  .hideOnMobile{
-    display: none;
+  top: 0;
+    background-color: white;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+    height: 100px;
+    position: fixed;
+    width: 100%;
+    z-index: 1001;
+    display: flex;
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
   }
-  .menu-button{
-    display: block;
+  
+  nav a {
+    height: 100%;
+    
+    padding: 0 30px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: black;
+    font-size: 20px; /* Set your desired font size */
   }
-}
-@media(max-width: 400px){
+  
+  nav ul{
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  nav li{
+    height: 50px;
+  }
+  
+
+  nav li:first-child{
+    margin-right: auto;
+  }
+  .navbar-brand img {
+    max-height: 180px;
+    /* Adjust the logo height */
+  }
   .sidebar{
+    position: fixed;
+    top: 0; 
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .sidebar li{
     width: 100%;
   }
-}
+  .sidebar a{
+    width: 100%;
+  }
+  .menu-button{
+    display: none;
+  }
+  @media(max-width: 800px){
+    .hideOnMobile{
+      display: none;
+    }
+    .menu-button{
+      display: block;
+    }
+  }
+  @media(max-width: 400px){
+    .sidebar{
+      width: 100%;
+      position: absolute;
+    }
+  }
+  /* Sidebar Style */
 /*---------------------container start ------------------------------------*/
 .container {
-    margin: 0 auto;
-    padding: 2rem; /* Adjusted padding for smaller container */
-    width: 80%; /* Adjusted width for better responsiveness */
+  margin: 0 auto; /* Fix the typo here */
+  padding: 2rem;
+  width: 80%;
 }
 
 h2 {
     font-size: 2.5rem; /* Increased font size for h2 */
 }
+
 
 .accordion button {
     font-size: 1.3rem; /* Increased font size for accordion buttons */

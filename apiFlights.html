@@ -1,408 +1,388 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      src="https://kit.fontawesome.com/64d58efce2.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <title>Airport Information</title>
-    <style>
-      /*-----------------------------------*\
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>Airport Information</title>
+<style>
+/*-----------------------------------*\
  * #HEADER
 \*-----------------------------------*/
-
-      /* General Styles */
-      body {
-        margin: 0;
-        padding: 0;
-        font-family: "Arial", sans-serif;
-        background-color: #f8f8f8;
-      }
-
-      /*-----------------------------------*\
+/* General Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Arial", sans-serif;
+  background-color: #f8f8f8;
+}
+/*-----------------------------------*\
  * #HEADER
 \*-----------------------------------*/
-      nav {
-        top: 0;
-        background-color: white;
-        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
-        height: 100px;
-        position: fixed;
-        width: 100%;
-        z-index: 1001;
-        display: flex;
-        justify-content: center; /* Center items horizontally */
-        align-items: center; /* Center items vertically */
-      }
-
-      nav a {
-        height: 100%;
-
-        padding: 0 30px;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        color: black;
-        font-size: 20px; /* Set your desired font size */
-      }
-
-      nav ul {
-        width: 100%;
-        list-style: none;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-      }
-      nav li {
-        height: 50px;
-      }
-
-      nav li:first-child {
-        margin-right: auto;
-      }
-      .navbar-brand img {
-        max-height: 180px;
-        /* Adjust the logo height */
-      }
-      .sidebar {
-        position: fixed;
-        top: 0;
-        right: 0;
-        height: 100vh;
-        width: 250px;
-        background-color: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(12px);
-        box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
-        list-style: none;
-        display: none;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-      }
-      .sidebar li {
-        width: 100%;
-      }
-      .sidebar a {
-        width: 100%;
-      }
-      .menu-button {
-        display: none;
-      }
-      @media (max-width: 800px) {
-        .hideOnMobile {
-          display: none;
-        }
-        .menu-button {
-          display: block;
-        }
-      }
-      @media (max-width: 400px) {
-        .sidebar {
-          width: 100%;
-          position: absolute;
-        }
-      }
-      /* Sidebar Style */
-      .container {
-        background-color: #fff;
-        padding: 30px;
-        margin-top: 80px;
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-      }
-
-      .row {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 20px;
-      }
-
-      .flight {
-        flex: calc(50% - 10px);
-        margin-right: 20px;
-        margin-bottom: 2px;
-      }
-
-      label {
-        display: flex;
-        align-items: center;
-        margin-bottom: 8px;
-        font-size: 14px;
-        color: #333; /* Changed text color to dark gray */
-      }
-
-      input,
-      select {
-        width: 100%;
-        padding: 8px;
-        margin-bottom: 15px;
-        border: 1px solid #ddd; /* Changed border color to light gray */
-        border-radius: 3px;
-        box-sizing: border-box;
-        font-size: 14px;
-        background-color: #f5f5f5; /* Changed background color to light gray */
-        color: #333; /* Changed text color to dark gray */
-      }
-
-      .search button {
-        padding: 12px 24px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
-        font-size: 16px;
-        transition: background-color 0.3s;
-      }
-
-      .search button:hover {
-        background-color: #0056b3;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <nav>
-        <ul class="sidebar">
-          <li onclick="hideSidebar()">
-            <a href="#"
-              ><svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="26"
-                viewBox="0 96 960 960"
-                width="26"
-              >
-                231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/>
-              </svg></a
-            >
-          </li>
-          <li><a href="HomePage.html">Home</a></li>
-          <li><a href="apiFlights.html">Flights</a></li>
-          <li><a href="api.html">Best Restaurants</a></li>
-          <li><a href="FAQ.html">FAQ</a></li>
-          <li><a href="Contact.html">Contact</a></li>
-          <li><a href="profile.php">Profile</a></li>
-
-        </ul>
-        <ul>
-          <li>
-            <a class="navbar-brand" href="index.html"
-              ><img src="Images/logo.png" alt="Logo" class="img-fluid"
-            /></a>
-          </li>
-          <li class="hideOnMobile"><a href="HomePage.html">Home</a></li>
-          <li class="hideOnMobile"><a href="apiFlights.html">Flights</a></li>
-          <li class="hideOnMobile"><a href="api.html">Best Restaurants</a></li>
-          <li class="hideOnMobile"><a href="FAQ.html">FAQ</a></li>
-          <li class="hideOnMobile"><a href="Contact.html">Contact</a></li>
-          <li class="hideOnMobile"><a href="profile.php">Profile</a></li>
-
-          <li class="menu-button" onclick="showSidebar()">
-            <a href="#"
-              ><svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="26"
-                viewBox="0 96 960 960"
-                width="26"
-              >
-                <path
-                  d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"
-                /></svg
-            ></a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <div class="container">
-      <div class="row">
-          <div class="flight">
-              <label for="airportInput1">Enter Airport 1:</label>
-              <input type="text" id="airportInput1" class="form-control">
-          </div>
-          <div class="flight">
-              <label for="airportInput2">Enter Airport 2:</label>
-              <input type="text" id="airportInput2" class="form-control">
-          </div>
-      </div>
-      <div class="row">
-          <div class="flight">
-              <label for="dateInput">Select Date:</label>
-              <input type="date" id="dateInput" class="form-control">
-          </div>
-          <div class="flight">
-              <label for="itineraryTypeInput">Select Itinerary Type:</label>
-              <select id="itineraryTypeInput" class="form-control">
-                  <option value="ONE_WAY">ONE_WAY</option>
-             <!-- <option value="ROUND_TRIP">ROUND_TRIP</option>
-                  <option value="MULTI_CITY">MULTI_CITY</option>-->
-              </select>
-          </div>
-      </div>
-      <div class="row">
-          <div class="flight">
-              <label for="sortOrderInput">Select Sort Order:</label>
-              <select id="sortOrderInput" class="form-control">
-                  <option value="ML_BEST_VALUE">ML_BEST_VALUE</option>
-                  <option value="DURATION">DURATION</option>
-                  <option value="PRICE">PRICE</option>
-                  <option value="EARLIEST_OUTBOUND_DEPARTURE">EARLIEST_OUTBOUND_DEPARTURE</option>
-                  <option value="EARLIEST_OUTBOUND_ARRIVAL">EARLIEST_OUTBOUND_ARRIVAL</option>
-                  <option value="LATEST_OUTBOUND_DEPARTURE">LATEST_OUTBOUND_DEPARTURE</option>
-                  <option value="LATEST_OUTBOUND_ARRIVAL">LATEST_OUTBOUND_ARRIVAL</option>
-              </select>
-          </div>
-          <div class="flight>
-              <label for="numAdultsInput">Enter Number of Adults:</label>
-              <input type="number" id="numAdultsInput" class="form-control" value="1">
-          </div>
-      </div>
-      <div class="row">
-          <div class="flight">
-              <label for="numSeniorsInput">Enter Number of Seniors:</label>
-              <input type="number" id="numSeniorsInput" class="form-control" value="1">
-          </div>
-          <div class="flight">
-              <label for="classOfServiceInput">Select Class of Service:</label>
-              <select id="classOfServiceInput" class="form-control">
-                  <option value="ECONOMY">ECONOMY</option>
-                  <option value="PREMIUM_ECONOMY">PREMIUM ECONOMY</option>
-                  <option value="BUSINESS">BUSINESS</option>
-                  <option value="FIRST">FIRST</option>
-              </select>
-          </div>
-      </div>
-      <div class="search">
-          <div class="col-md-12">
-              <button onclick="searchAirports()" class="btn btn-primary">Search</button>
-          </div>
-      </div>
-      <div id="flightOutput" class="flightout"></div>
+nav {
+  top: 0;
+  background-color: white;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+  height: 100px;
+  position: fixed;
+  width: 100%;
+  z-index: 1001;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+nav a {
+  height: 100%;
+  padding: 0 30px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: black;
+  font-size: 20px;
+}
+nav ul {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+nav li {
+  height: 50px;
+}
+nav li:first-child {
+  margin-right: auto;
+}
+.navbar-brand img {
+  max-height: 180px;
+}
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 250px;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.sidebar li {
+  width: 100%;
+}
+.sidebar a {
+  width: 100%;
+}
+.menu-button {
+  display: none;
+}
+@media (max-width: 800px) {
+  .hideOnMobile {
+    display: none;
+  }
+  .menu-button {
+    display: block;
+  }
+}
+@media (max-width: 400px) {
+  .sidebar {
+    width: 100%;
+    position: absolute;
+  }
+}
+.container {
+  background-color: #fff;
+  padding: 30px;
+  margin-top: 80px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.flight {
+  flex: calc(50% - 10px);
+  margin-right: 20px;
+  margin-bottom: 2px;
+}
+label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #333;
+}
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-size: 14px;
+  background-color: #f5f5f5;
+  color: #333;
+}
+.search button {
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+.search button:hover {
+  background-color: #0056b3;
+}
+/* Table Styles */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+.table th {
+  background-color: #f2f2f2;
+}
+</style>
+</head>
+<body>
+<header>
+<nav>
+  <ul class="sidebar">
+    <li onclick="hideSidebar()">
+      <a href="#"><i class="fas fa-bars"></i></a>
+    </li>
+    <li><a href="HomePage.html">Home</a></li>
+    <li><a href="apiFlights.html">Flights</a></li>
+    <li><a href="api.html">Best Restaurants</a></li>
+    <li><a href="FAQ.html">FAQ</a></li>
+    <li><a href="Contact.html">Contact</a></li>
+    <li><a href="profile.php">Profile</a></li>
+  </ul>
+  <ul>
+    <li>
+      <a class="navbar-brand" href="index.html">
+        <img src="Images/logo.png" alt="Logo" class="img-fluid">
+      </a>
+    </li>
+    <li class="hideOnMobile"><a href="HomePage.html">Home</a></li>
+    <li class="hideOnMobile"><a href="apiFlights.html">Flights</a></li>
+    <li class="hideOnMobile"><a href="api.html">Best Restaurants</a></li>
+    <li class="hideOnMobile"><a href="FAQ.html">FAQ</a></li>
+    <li class="hideOnMobile"><a href="Contact.html">Contact</a></li>
+    <li class="hideOnMobile"><a href="profile.php">Profile</a></li>
+    <li class="menu-button" onclick="showSidebar()">
+      <a href="#"><i class="fas fa-bars"></i></a>
+    </li>
+  </ul>
+</nav>
+</header>
+<div class="container">
+<div class="row">
+  <div class="flight">
+    <label for="airportInput1">Enter Airport 1:</label>
+    <input type="text" id="airportInput1" class="form-control">
   </div>
+  <div class="flight">
+    <label for="airportInput2">Enter Airport 2:</label>
+    <input type="text" id="airportInput2" class="form-control">
+  </div>
+</div>
+<div class="row">
+  <div class="flight">
+    <label for="dateInput">Select Date:</label>
+    <input type="date" id="dateInput" class="form-control">
+  </div>
+  <div class="flight">
+    <label for="itineraryTypeInput">Select Itinerary Type:</label>
+    <select id="itineraryTypeInput" class="form-control">
+      <option value="ONE_WAY">ONE_WAY</option>
+    </select>
+  </div>
+</div>
+<div class="row">
+  <div class="flight">
+    <label for="sortOrderInput">Select Sort Order:</label>
+    <select id="sortOrderInput" class="form-control">
+      <option value="ML_BEST_VALUE">ML_BEST_VALUE</option>
+      <option value="DURATION">DURATION</option>
+      <option value="PRICE">PRICE</option>
+      <option value="EARLIEST_OUTBOUND_DEPARTURE">EARLIEST_OUTBOUND_DEPARTURE</option>
+      <option value="EARLIEST_OUTBOUND_ARRIVAL">EARLIEST_OUTBOUND_ARRIVAL</option>
+      <option value="LATEST_OUTBOUND_DEPARTURE">LATEST_OUTBOUND_DEPARTURE</option>
+      <option value="LATEST_OUTBOUND_ARRIVAL">LATEST_OUTBOUND_ARRIVAL</option>
+    </select>
+  </div>
+  <div class="flight">
+    <label for="numAdultsInput">Enter Number of Adults:</label>
+    <input type="number" id="numAdultsInput" class="form-control" value="1">
+  </div>
+</div>
+<div class="row">
+  <div class="flight">
+    <label for="numSeniorsInput">Enter Number of Seniors:</label>
+    <input type="number" id="numSeniorsInput" class="form-control" value="1">
+  </div>
+  <div class="flight">
+    <label for="classOfServiceInput">Select Class of Service:</label>
+    <select id="classOfServiceInput" class="form-control">
+      <option value="ECONOMY">ECONOMY</option>
+      <option value="PREMIUM_ECONOMY">PREMIUM ECONOMY</option>
+      <option value="BUSINESS">BUSINESS</option>
+      <option value="FIRST">FIRST</option>
+    </select>
+  </div>
+</div>
+<div class="search">
+  <div class="col-md-12">
+    <button onclick="searchAirports()" class="btn btn-primary">Search</button>
+  </div>
+</div>
+<table id="flightTable" class="table">
+  <thead>
+    <tr>
+      <th>Departure</th>
+      <th>Arrival</th>
+      <th>Airline</th>
+      <th>Flight Number</th>
+      <th>Price</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody id="flightTableBody">
+    <!-- Flight data will be inserted here -->
+  </tbody>
+</table>
+</div>
+<script>
+async function searchAirport(airportInputId, callback) {
+  const airport = document.getElementById(airportInputId).value;
+  const url = `https://tripadvisor16.p.rapidapi.com/api/v1/flights/searchAirport?query=${airport}`;
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': '3eb75a4a8bmsh10b4415f792e585p148bacjsnbc7d8494ecae',
+      'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
+    }
+  };
 
-  <script>
-      async function searchAirport(airportInputId, callback) {
-          const airport = document.getElementById(airportInputId).value;
-          const url = `https://tripadvisor16.p.rapidapi.com/api/v1/flights/searchAirport?query=${airport}`;
-          const options = {
-              method: 'GET',
-              headers: {
-                'X-RapidAPI-Key': 'a636439ef8mshc53567441df2eb5p147556jsn56b23bb563a3',
-                  'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
-              }
-          };
+  try {
+    const response = await fetch(url, options);
+    const result = await response.json();
+    console.log(result);
 
-          try {
-              const response = await fetch(url, options);
-              const result = await response.json();
-              console.log(result);
-
-              if (result.status === true) {
-                  const data = result.data[0];
-                  callback(data.airportCode);
-              } else {
-                  console.log("No data found");
-              }
-          } catch (error) {
-              console.error(error);
-              console.log("Error occurred. Please try again later.");
-          }
-      }
-
-      async function searchAirports() {
-          let airport1, airport2;
-          
-          if (airport1 = document.getElementById("airportInput1").value) {
-              searchAirport("airportInput1", (code) => {
-                  airport1 = code;
-                  if (airport2) {
-                      makeSecondAPICall(airport1, airport2);
-                  }
-              });
-          }
-          if (airport2 = document.getElementById("airportInput2").value) {
-              searchAirport("airportInput2", (code) => {
-                  airport2 = code;
-                  if (airport1) {
-                      makeSecondAPICall(airport1, airport2);
-                  }
-              });
-          }
-      }
-
-      async function makeSecondAPICall(sourceAirportCode, destinationAirportCode) {
-          const date = document.getElementById("dateInput").value;
-          const itineraryType = document.getElementById("itineraryTypeInput").value;
-          const sortOrder = document.getElementById("sortOrderInput").value;
-          const numAdults = document.getElementById("numAdultsInput").value;
-          const numSeniors = document.getElementById("numSeniorsInput").value;
-          const classOfService = document.getElementById("classOfServiceInput").value;
-
-          const url = `https://tripadvisor16.p.rapidapi.com/api/v1/flights/searchFlights?sourceAirportCode=${sourceAirportCode}&destinationAirportCode=${destinationAirportCode}&date=${date}&itineraryType=${itineraryType}&sortOrder=${sortOrder}&numAdults=${numAdults}&numSeniors=${numSeniors}&classOfService=${classOfService}&pageNumber=1&currencyCode=USD`;
-
-          const options = {
-              method: 'GET',
-              headers: {
-                'X-RapidAPI-Key': 'a636439ef8mshc53567441df2eb5p147556jsn56b23bb563a3',
-                  'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
-              }
-          };
-
-          try {
-              const response = await fetch(url, options);
-              const result = await response.json();
-              console.log(result);
-
-              const outputDiv = document.getElementById("flightOutput");
-
-              if (result.status === true) {
-                  const flights = result.data.flights;
-                  if (flights.length > 0) {
-                      outputDiv.innerHTML = ""; // Clear previous content
-                      flights.forEach(flight => {
-                          outputDiv.innerHTML += `
-                              <div class="flight-box">
-                                  <div class="flight-info">
-                                      <p>Departure: ${flight.segments[0].legs[0].departureDateTime}</p>
-                                      <p>Arrival: ${flight.segments[0].legs[0].arrivalDateTime}</p>
-                                      <p>Airline: ${flight.segments[0].legs[0].marketingCarrier.displayName}</p>
-                                      <p>Flight Number: ${flight.segments[0].legs[0].flightNumber}</p>
-                                      <p>Price: ${flight.purchaseLinks[0].totalPrice}</p>
-                                      <a href="${flight.purchaseLinks[0].url}" target="_blank" onclick="disableIframe()">Book Now</a>
-                                  </div>
-                                  <img src="Images/airplane.PNG" alt="Airplane" class="flight-image">
-                              </div>
-                          `;
-                      });
-                  } else {
-                      outputDiv.innerHTML = "<p>No flights found.</p>";
-                  }
-              } else {
-                  outputDiv.innerHTML = "<p></p>";
-              }
-          } catch (error) {
-              console.error(error);
-          }
-      }
-
-      //header maybe
-
-      function showSidebar(){
-    const sidebar = document.querySelector('.sidebar')
-    sidebar.style.display = 'flex'
+    if (result.status === true) {
+      const data = result.data[0];
+      callback(data.airportCode);
+    } else {
+      console.log("No data found");
+    }
+  } catch (error) {
+    console.error(error);
+    console.log("Error occurred. Please try again later.");
   }
-  function hideSidebar(){
-    const sidebar = document.querySelector('.sidebar')
-    sidebar.style.display = 'none'
+}
+
+async function searchAirports() {
+  let airport1, airport2;
+
+  if (airport1 = document.getElementById("airportInput1").value) {
+    searchAirport("airportInput1", (code) => {
+      airport1 = code;
+      if (airport2) {
+        makeSecondAPICall(airport1, airport2);
+      }
+    });
   }
-  </script>
+  if (airport2 = document.getElementById("airportInput2").value) {
+    searchAirport("airportInput2", (code) => {
+      airport2 = code;
+      if (airport1) {
+        makeSecondAPICall(airport1, airport2);
+      }
+    });
+  }
+}
+
+async function makeSecondAPICall(sourceAirportCode, destinationAirportCode) {
+  const date = document.getElementById("dateInput").value;
+  const itineraryType = document.getElementById("itineraryTypeInput").value;
+  const sortOrder = document.getElementById("sortOrderInput").value;
+  const numAdults = document.getElementById("numAdultsInput").value;
+  const numSeniors = document.getElementById("numSeniorsInput").value;
+  const classOfService = document.getElementById("classOfServiceInput").value;
+
+  const url = `https://tripadvisor16.p.rapidapi.com/api/v1/flights/searchFlights?sourceAirportCode=${sourceAirportCode}&destinationAirportCode=${destinationAirportCode}&date=${date}&itineraryType=${itineraryType}&sortOrder=${sortOrder}&numAdults=${numAdults}&numSeniors=${numSeniors}&classOfService=${classOfService}&pageNumber=1&currencyCode=USD`;
+
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': '3eb75a4a8bmsh10b4415f792e585p148bacjsnbc7d8494ecae',
+      'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
+    }
+  };
+
+  try {
+    const response = await fetch(url, options);
+    const result = await response.json();
+    console.log(result);
+
+    const flightTableBody = document.getElementById("flightTableBody");
+
+    if (result.status === true) {
+      const flights = result.data.flights;
+      if (flights.length > 0) {
+        flightTableBody.innerHTML = ""; // Clear previous content
+        flights.forEach(flight => {
+          const newRow = document.createElement('tr');
+          newRow.innerHTML = `
+            <td>${flight.segments[0].legs[0].departureDateTime}</td>
+            <td>${flight.segments[0].legs[0].arrivalDateTime}</td>
+            <td>${flight.segments[0].legs[0].marketingCarrier.displayName}</td>
+            <td>${flight.segments[0].legs[0].flightNumber}</td>
+            <td>${flight.purchaseLinks[0].totalPrice}</td>
+            <td><a href="${flight.purchaseLinks[0].url}" target="_blank" onclick="disableIframe()">Book Now</a></td>
+          `;
+          flightTableBody.appendChild(newRow);
+        });
+      } else {
+        flightTableBody.innerHTML = "<tr><td colspan='6'>No flights found.</td></tr>";
+      }
+    } else {
+      flightTableBody.innerHTML = "<tr><td colspan='6'></td></tr>";
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+function showSidebar(){
+  const sidebar = document.querySelector('.sidebar')
+  sidebar.style.display = 'flex'
+}
+function hideSidebar(){
+  const sidebar = document.querySelector('.sidebar')
+  sidebar.style.display = 'none'
+}
+</script>
 </body>
 </html>

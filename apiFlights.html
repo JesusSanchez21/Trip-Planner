@@ -222,205 +222,187 @@
         </ul>
       </nav>
     </header>
-
     <div class="container">
       <div class="row">
-        <div class="flight">
-          <label for="airportInput1">Enter Airport 1:</label>
-          <input type="text" id="airportInput1" class="form-control" />
-        </div>
-        <div class="flight">
-          <label for="airportInput2">Enter Airport 2:</label>
-          <input type="text" id="airportInput2" class="form-control" />
-        </div>
-        <div class="flight">
-          <label for="dateInput">Select Date:</label>
-          <input type="date" id="dateInput" class="form-control" />
-        </div>
+          <div class="flight">
+              <label for="airportInput1">Enter Airport 1:</label>
+              <input type="text" id="airportInput1" class="form-control">
+          </div>
+          <div class="flight">
+              <label for="airportInput2">Enter Airport 2:</label>
+              <input type="text" id="airportInput2" class="form-control">
+          </div>
       </div>
       <div class="row">
-        <div class="flight">
-          <label for="itineraryTypeInput">Select Itinerary Type:</label>
-          <select id="itineraryTypeInput" class="form-control">
-            <option value="ONE_WAY">ONE_WAY</option>
-            <!-- <option value="ROUND_TRIP">ROUND_TRIP</option>
-                    <option value="MULTI_CITY">MULTI_CITY</option>-->
-          </select>
-        </div>
-        <div class="flight">
-          <label for="sortOrderInput">Select Sort Order:</label>
-          <select id="sortOrderInput" class="form-control">
-            <option value="ML_BEST_VALUE">ML_BEST_VALUE</option>
-            <option value="DURATION">DURATION</option>
-            <option value="PRICE">PRICE</option>
-            <option value="EARLIEST_OUTBOUND_DEPARTURE">
-              EARLIEST_OUTBOUND_DEPARTURE
-            </option>
-            <option value="EARLIEST_OUTBOUND_ARRIVAL">
-              EARLIEST_OUTBOUND_ARRIVAL
-            </option>
-            <option value="LATEST_OUTBOUND_DEPARTURE">
-              LATEST_OUTBOUND_DEPARTURE
-            </option>
-            <option value="LATEST_OUTBOUND_ARRIVAL">
-              LATEST_OUTBOUND_ARRIVAL
-            </option>
-          </select>
-        </div>
-        <div class="flight">
-          <label for="numAdultsInput"> Nº Adult</label>
-          <input
-            type="number"
-            id="numAdultsInput"
-            class="form-control"
-            value="1"
-          />
-        </div>
+          <div class="flight">
+              <label for="dateInput">Select Date:</label>
+              <input type="date" id="dateInput" class="form-control">
+          </div>
+          <div class="flight">
+              <label for="itineraryTypeInput">Select Itinerary Type:</label>
+              <select id="itineraryTypeInput" class="form-control">
+                  <option value="ONE_WAY">ONE_WAY</option>
+             <!-- <option value="ROUND_TRIP">ROUND_TRIP</option>
+                  <option value="MULTI_CITY">MULTI_CITY</option>-->
+              </select>
+          </div>
       </div>
       <div class="row">
-        <div class="flight">
-          <label for="classOfServiceInput">Select Class of Service:</label>
-          <select id="classOfServiceInput" class="form-control">
-            <option value="ECONOMY">ECONOMY</option>
-            <option value="PREMIUM_ECONOMY">PREMIUM ECONOMY</option>
-            <option value="BUSINESS">BUSINESS</option>
-            <option value="FIRST">FIRST</option>
-          </select>
-        </div>
+          <div class="flight">
+              <label for="sortOrderInput">Select Sort Order:</label>
+              <select id="sortOrderInput" class="form-control">
+                  <option value="ML_BEST_VALUE">ML_BEST_VALUE</option>
+                  <option value="DURATION">DURATION</option>
+                  <option value="PRICE">PRICE</option>
+                  <option value="EARLIEST_OUTBOUND_DEPARTURE">EARLIEST_OUTBOUND_DEPARTURE</option>
+                  <option value="EARLIEST_OUTBOUND_ARRIVAL">EARLIEST_OUTBOUND_ARRIVAL</option>
+                  <option value="LATEST_OUTBOUND_DEPARTURE">LATEST_OUTBOUND_DEPARTURE</option>
+                  <option value="LATEST_OUTBOUND_ARRIVAL">LATEST_OUTBOUND_ARRIVAL</option>
+              </select>
+          </div>
+          <div class="flight>
+              <label for="numAdultsInput">Enter Number of Adults:</label>
+              <input type="number" id="numAdultsInput" class="form-control" value="1">
+          </div>
+      </div>
+      <div class="row">
+          <div class="flight">
+              <label for="numSeniorsInput">Enter Number of Seniors:</label>
+              <input type="number" id="numSeniorsInput" class="form-control" value="1">
+          </div>
+          <div class="flight">
+              <label for="classOfServiceInput">Select Class of Service:</label>
+              <select id="classOfServiceInput" class="form-control">
+                  <option value="ECONOMY">ECONOMY</option>
+                  <option value="PREMIUM_ECONOMY">PREMIUM ECONOMY</option>
+                  <option value="BUSINESS">BUSINESS</option>
+                  <option value="FIRST">FIRST</option>
+              </select>
+          </div>
       </div>
       <div class="search">
-        <div class="col-md-12">
-          <button onclick="searchAirports()" class="btn btn-primary">
-            Search
-          </button>
-        </div>
+          <div class="col-md-12">
+              <button onclick="searchAirports()" class="btn btn-primary">Search</button>
+          </div>
       </div>
       <div id="flightOutput" class="flightout"></div>
-    </div>
+  </div>
 
-    <script>
+  <script>
       async function searchAirport(airportInputId, callback) {
-        const airport = document.getElementById(airportInputId).value;
-        const url = `https://tripadvisor16.p.rapidapi.com/api/v1/flights/searchAirport?query=${airport}`;
-        const options = {
-          method: "GET",
-          headers: {
-            "X-RapidAPI-Key":
-              "3cf22992c1msh4cd0e17859c13a3p181931jsnceef025a0a1b",
-            "X-RapidAPI-Host": "tripadvisor16.p.rapidapi.com",
-          },
-        };
+          const airport = document.getElementById(airportInputId).value;
+          const url = `https://tripadvisor16.p.rapidapi.com/api/v1/flights/searchAirport?query=${airport}`;
+          const options = {
+              method: 'GET',
+              headers: {
+                'X-RapidAPI-Key': 'a636439ef8mshc53567441df2eb5p147556jsn56b23bb563a3',
+                  'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
+              }
+          };
 
-        try {
-          const response = await fetch(url, options);
-          const result = await response.json();
-          console.log(result);
+          try {
+              const response = await fetch(url, options);
+              const result = await response.json();
+              console.log(result);
 
-          if (result.status === true) {
-            const data = result.data[0];
-            callback(data.airportCode);
-          } else {
-            console.log("No data found");
+              if (result.status === true) {
+                  const data = result.data[0];
+                  callback(data.airportCode);
+              } else {
+                  console.log("No data found");
+              }
+          } catch (error) {
+              console.error(error);
+              console.log("Error occurred. Please try again later.");
           }
-        } catch (error) {
-          console.error(error);
-          console.log("Error occurred. Please try again later.");
-        }
       }
 
       async function searchAirports() {
-        let airport1, airport2;
-
-        if ((airport1 = document.getElementById("airportInput1").value)) {
-          searchAirport("airportInput1", (code) => {
-            airport1 = code;
-            if (airport2) {
-              makeSecondAPICall(airport1, airport2);
-            }
-          });
-        }
-        if ((airport2 = document.getElementById("airportInput2").value)) {
-          searchAirport("airportInput2", (code) => {
-            airport2 = code;
-            if (airport1) {
-              makeSecondAPICall(airport1, airport2);
-            }
-          });
-        }
+          let airport1, airport2;
+          
+          if (airport1 = document.getElementById("airportInput1").value) {
+              searchAirport("airportInput1", (code) => {
+                  airport1 = code;
+                  if (airport2) {
+                      makeSecondAPICall(airport1, airport2);
+                  }
+              });
+          }
+          if (airport2 = document.getElementById("airportInput2").value) {
+              searchAirport("airportInput2", (code) => {
+                  airport2 = code;
+                  if (airport1) {
+                      makeSecondAPICall(airport1, airport2);
+                  }
+              });
+          }
       }
 
-      async function makeSecondAPICall(
-        sourceAirportCode,
-        destinationAirportCode
-      ) {
-        const date = document.getElementById("dateInput").value;
-        const itineraryType =
-          document.getElementById("itineraryTypeInput").value;
-        const sortOrder = document.getElementById("sortOrderInput").value;
-        const numAdults = document.getElementById("numAdultsInput").value;
-        const numSeniors = document.getElementById("numSeniorsInput").value;
-        const classOfService = document.getElementById(
-          "classOfServiceInput"
-        ).value;
+      async function makeSecondAPICall(sourceAirportCode, destinationAirportCode) {
+          const date = document.getElementById("dateInput").value;
+          const itineraryType = document.getElementById("itineraryTypeInput").value;
+          const sortOrder = document.getElementById("sortOrderInput").value;
+          const numAdults = document.getElementById("numAdultsInput").value;
+          const numSeniors = document.getElementById("numSeniorsInput").value;
+          const classOfService = document.getElementById("classOfServiceInput").value;
 
-        const url = `https://tripadvisor16.p.rapidapi.com/api/v1/flights/searchFlights?sourceAirportCode=${sourceAirportCode}&destinationAirportCode=${destinationAirportCode}&date=${date}&itineraryType=${itineraryType}&sortOrder=${sortOrder}&numAdults=${numAdults}&numSeniors=${numSeniors}&classOfService=${classOfService}&pageNumber=1&currencyCode=USD`;
+          const url = `https://tripadvisor16.p.rapidapi.com/api/v1/flights/searchFlights?sourceAirportCode=${sourceAirportCode}&destinationAirportCode=${destinationAirportCode}&date=${date}&itineraryType=${itineraryType}&sortOrder=${sortOrder}&numAdults=${numAdults}&numSeniors=${numSeniors}&classOfService=${classOfService}&pageNumber=1&currencyCode=USD`;
 
-        const options = {
-          method: "GET",
-          headers: {
-            "X-RapidAPI-Key":
-              "3cf22992c1msh4cd0e17859c13a3p181931jsnceef025a0a1b",
-            "X-RapidAPI-Host": "tripadvisor16.p.rapidapi.com",
-          },
-        };
+          const options = {
+              method: 'GET',
+              headers: {
+                'X-RapidAPI-Key': 'a636439ef8mshc53567441df2eb5p147556jsn56b23bb563a3',
+                  'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
+              }
+          };
 
-        try {
-          const response = await fetch(url, options);
-          const result = await response.json();
-          console.log(result);
+          try {
+              const response = await fetch(url, options);
+              const result = await response.json();
+              console.log(result);
 
-          const outputDiv = document.getElementById("flightOutput");
+              const outputDiv = document.getElementById("flightOutput");
 
-          if (result.status === true) {
-            const flights = result.data.flights;
-            if (flights.length > 0) {
-              outputDiv.innerHTML = ""; // Clear previous content
-              flights.forEach((flight) => {
-                outputDiv.innerHTML += `
-                                <div class="flight-box">
-                                    <div class="flight-info">
-                                        <p>Departure: ${flight.segments[0].legs[0].departureDateTime}</p>
-                                        <p>Arrival: ${flight.segments[0].legs[0].arrivalDateTime}</p>
-                                        <p>Airline: ${flight.segments[0].legs[0].marketingCarrier.displayName}</p>
-                                        <p>Flight Number: ${flight.segments[0].legs[0].flightNumber}</p>
-                                        <p>Price: ${flight.purchaseLinks[0].totalPrice}</p>
-                                        <a href="${flight.purchaseLinks[0].url}" target="_blank" onclick="disableIframe()">Book Now</a>
-                                    </div>
-                                    <img src="Images/airplane.PNG" alt="Airplane" class="flight-image">
-                                </div>
-                            `;
-              });
-            } else {
-              outputDiv.innerHTML = "<p>No flights found.</p>";
-            }
-          } else {
-            outputDiv.innerHTML = "<p></p>";
+              if (result.status === true) {
+                  const flights = result.data.flights;
+                  if (flights.length > 0) {
+                      outputDiv.innerHTML = ""; // Clear previous content
+                      flights.forEach(flight => {
+                          outputDiv.innerHTML += `
+                              <div class="flight-box">
+                                  <div class="flight-info">
+                                      <p>Departure: ${flight.segments[0].legs[0].departureDateTime}</p>
+                                      <p>Arrival: ${flight.segments[0].legs[0].arrivalDateTime}</p>
+                                      <p>Airline: ${flight.segments[0].legs[0].marketingCarrier.displayName}</p>
+                                      <p>Flight Number: ${flight.segments[0].legs[0].flightNumber}</p>
+                                      <p>Price: ${flight.purchaseLinks[0].totalPrice}</p>
+                                      <a href="${flight.purchaseLinks[0].url}" target="_blank" onclick="disableIframe()">Book Now</a>
+                                  </div>
+                                  <img src="Images/airplane.PNG" alt="Airplane" class="flight-image">
+                              </div>
+                          `;
+                      });
+                  } else {
+                      outputDiv.innerHTML = "<p>No flights found.</p>";
+                  }
+              } else {
+                  outputDiv.innerHTML = "<p></p>";
+              }
+          } catch (error) {
+              console.error(error);
           }
-        } catch (error) {
-          console.error(error);
-        }
       }
 
       //header maybe
 
-      function showSidebar() {
-        const sidebar = document.querySelector(".sidebar");
-        sidebar.style.display = "flex";
-      }
-      function hideSidebar() {
-        const sidebar = document.querySelector(".sidebar");
-        sidebar.style.display = "none";
-      }
-    </script>
-  </body>
+      function showSidebar(){
+    const sidebar = document.querySelector('.sidebar')
+    sidebar.style.display = 'flex'
+  }
+  function hideSidebar(){
+    const sidebar = document.querySelector('.sidebar')
+    sidebar.style.display = 'none'
+  }
+  </script>
+</body>
 </html>
